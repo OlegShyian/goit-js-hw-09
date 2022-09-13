@@ -22,7 +22,7 @@ img {
   font-size: 14px;
 }
 
-button[data-start] {
+#datetime-picker + button[data-start] {
   padding: 5px 10px;
   font-size: 14px;
 }

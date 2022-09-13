@@ -40,19 +40,25 @@ function startTimer() {
 }
 
 function renderTimerWithInterval(interval) {
+  renderTimer(clearTimer);
+
   const timer = setInterval(() => {
-    const timeStamp = selectedDate - Date.now();
-    const convertedDate = convertMs(timeStamp);
-    if (timeStamp === 0) {
-      clearInterval(timer);
-      return;
-    }
-    renderTimer(convertedDate);
+    renderTimer(clearTimer);
   }, interval);
+
+  function clearTimer() {
+    clearInterval(timer);
+  }
 }
 
-function renderTimer(date) {
-  Object.entries(date).forEach(([key, value]) => {
+function renderTimer(callbackStopTimer) {
+  const timeStamp = selectedDate - Date.now();
+  const convertedDate = convertMs(timeStamp);
+  if (timeStamp <= 0) {
+    callbackStopTimer();
+    return;
+  }
+  Object.entries(convertedDate).forEach(([key, value]) => {
     const formattedTime = addLeadingZero(value);
     const span = document.querySelector(`span[data-${key}]`);
     span.innerHTML = formattedTime;
