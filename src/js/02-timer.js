@@ -6,7 +6,6 @@ const TIMER_INTERVAL = 1000;
 const input = document.querySelector('#datetime-picker');
 const startButton = document.querySelector('button[data-start]');
 const failMessage = 'Please choose a date in the future';
-
 let selectedDate = null;
 const options = {
   enableTime: true,
