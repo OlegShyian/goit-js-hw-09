@@ -16,7 +16,7 @@ function generatePromises(e) {
     amount: Number(e.target.amount.value),
   };
 
-  for (let i = 0; i <= amount; i++) {
+  for (let i = 0; i < amount; i++) {
     createPromise(i + 1, delay)
       .then(({ position, delay }) =>
         setTimeout(() => {
